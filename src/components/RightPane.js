@@ -6,12 +6,12 @@ import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutline
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 import Avatar from "@mui/material/Avatar";
-import RecentTransactions from "./RecentTransactions";
-import Income from "./Income";
-import { NewUsers } from "./NewUsers";
-import { Balance } from "./Balance";
+import { IntensityGraph } from "./IntensityGraph";
 import profilePic from "../assets/profilePic.jpg";
 import axios from "axios";
+import { RelevanceGraph } from "./RelevanceGraph";
+import { LikelihoodGraph } from "./LikelihoodGrapg";
+import Datatable from "./Datatable";
 
 export const RightPane = () => {
   // state for storing all data from backend
@@ -22,7 +22,7 @@ export const RightPane = () => {
       try {
         const response = await axios({
           method: "get",
-          url: "http://localhost:5000/v1/black-coffer",
+          url: "http://localhost:5000/v1/black-coffer?limit=10",
         });
         const data = await response.data;
         setAllData(data);
@@ -45,7 +45,7 @@ export const RightPane = () => {
           <ChatBubbleOutlineOutlinedIcon className="iconsHover" />
           <NotificationsNoneOutlinedIcon className="iconsHover" />
           <div className="textDiv">
-            <p className="userText iconsHover">Dinesh Kumar</p>
+            <p className="userText iconsHover">Vickey Kumar</p>
             <p className="desgText iconsHover">Developer</p>
           </div>
           <Avatar className="iconsHover" src={profilePic}>
@@ -55,18 +55,18 @@ export const RightPane = () => {
         </div>
       </div>
       <div className="gridContainer">
-        <div className="incomeDiv">
-          <Income />
-        </div>
         <div className="newUsersDiv">
-          <NewUsers />
+          <IntensityGraph allData={allData} />
         </div>
-        <div className="balanceDiv">
-          <Balance />
+        <div>
+          <RelevanceGraph allData={allData} />
         </div>
-        <div className="transactionsDiv">
-          <RecentTransactions />
+        <div>
+          <LikelihoodGraph allData={allData} />
         </div>
+      </div>
+      <div>
+        <Datatable allData={allData} />
       </div>
     </div>
   );
