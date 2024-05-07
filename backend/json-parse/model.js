@@ -1,4 +1,3 @@
-"use strict";
 const mongoose = require("mongoose");
 
 const blackcofferSchema = new mongoose.Schema({
@@ -31,9 +30,6 @@ const blackcofferSchema = new mongoose.Schema({
   },
   published: {
     type: Date,
-  },
-  region: {
-    type: String,
   },
   country: {
     type: String,

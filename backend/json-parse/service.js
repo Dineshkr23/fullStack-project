@@ -1,4 +1,3 @@
-"use strict";
 const Blackcoffer = require("./model");
 
 module.exports = {

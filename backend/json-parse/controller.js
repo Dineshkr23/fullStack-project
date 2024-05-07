@@ -1,4 +1,3 @@
-"use strict";
 const services = require("./service");
 
 module.exports = {
